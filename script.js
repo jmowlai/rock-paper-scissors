@@ -1,3 +1,7 @@
+let player = 0;
+let computer = 0;
+let round = 0;
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.toUpperCase() == "ROCK") {
         if (computerSelection == "Rock") {
@@ -45,9 +49,10 @@ getComputerChoice = () => moves[Math.floor(Math.random() * moves.length)]
 const buttons = document.querySelectorAll('button');
 const container = document.querySelector('#results');
 const content = document.createElement('div');
-let player = 0;
-let computer = 0;
-let round = 0;
+
+const containInfo = document.querySelector('#game-info')
+const contentInfo = document.createElement('div');
+
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -63,5 +68,8 @@ buttons.forEach((button) => {
         else if (result.includes("LOSE") == true) {
             ++computer
         }
+        contentInfo.textContent = `The round is - ${round}, player score : ${player}, computer score : ${computer}`;
+        contentInfo.classList.add('contentInfo');
+        containInfo.appendChild(contentInfo);
     })
 })
