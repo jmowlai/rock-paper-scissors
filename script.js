@@ -53,14 +53,21 @@ const content = document.createElement('div');
 const containInfo = document.querySelector('#game-info')
 const contentInfo = document.createElement('div');
 
+contentInfo.textContent = `Round : ${round}, player score : ${player}, computer score : ${computer}`;
+contentInfo.classList.add('contentInfo');
+containInfo.appendChild(contentInfo);
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        result = playRound(button.id, getComputerChoice());
+        
         ++round;
+
+        result = playRound(button.id, getComputerChoice());
+
         content.textContent = result;
         content.classList.add('content');
         container.appendChild(content);
+        
         result = result.toUpperCase();
         if (result.includes("WIN") == true) {
             ++player;
@@ -68,8 +75,20 @@ buttons.forEach((button) => {
         else if (result.includes("LOSE") == true) {
             ++computer
         }
-        contentInfo.textContent = `The round is - ${round}, player score : ${player}, computer score : ${computer}`;
+
+        contentInfo.textContent = `Round : ${round}, player score : ${player}, computer score : ${computer}`;
         contentInfo.classList.add('contentInfo');
         containInfo.appendChild(contentInfo);
+
+        if (player == 5) {
+            contentInfo.textContent = `Round : ${round}, player score : ${player}, computer score : ${computer}, the player has won!`;
+            contentInfo.classList.add('contentInfo');
+            containInfo.appendChild(contentInfo);
+        }
+        if (computer == 5) {
+            contentInfo.textContent = `Round : ${round}, player score : ${player}, computer score : ${computer}, the computer has won!`;
+            contentInfo.classList.add('contentInfo');
+            containInfo.appendChild(contentInfo);
+        }
     })
 })
