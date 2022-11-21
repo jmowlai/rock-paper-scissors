@@ -85,7 +85,9 @@ buttons.forEach((button) => {
             contentInfo.classList.add('contentInfo');
             containInfo.appendChild(contentInfo);
             for (const button of buttons) {
-                button.disabled = true;
+                if (button.id != "refresh") {
+                    button.disabled = true;
+                }
             }
         }
         if (computer == 5) {
@@ -93,7 +95,9 @@ buttons.forEach((button) => {
             contentInfo.classList.add('contentInfo');
             containInfo.appendChild(contentInfo);
             for (const button of buttons) {
-                button.disabled = true;
+                if (button.id != "refresh") {
+                    button.disabled = true;
+                }
             }
         }
     })
