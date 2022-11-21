@@ -59,7 +59,7 @@ containInfo.appendChild(contentInfo);
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        
+
         ++round;
 
         result = playRound(button.id, getComputerChoice());
@@ -84,11 +84,17 @@ buttons.forEach((button) => {
             contentInfo.textContent = `Round : ${round}, player score : ${player}, computer score : ${computer}, the player has won!`;
             contentInfo.classList.add('contentInfo');
             containInfo.appendChild(contentInfo);
+            for (const button of buttons) {
+                button.disabled = true;
+            }
         }
         if (computer == 5) {
             contentInfo.textContent = `Round : ${round}, player score : ${player}, computer score : ${computer}, the computer has won!`;
             contentInfo.classList.add('contentInfo');
             containInfo.appendChild(contentInfo);
+            for (const button of buttons) {
+                button.disabled = true;
+            }
         }
     })
 })
